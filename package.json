@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "graphql-yoga": "^1.18.3",
+    "nodemon": "^2.0.15"
+  },
+  "name": "graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon -e js,mjs,graphql,json src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

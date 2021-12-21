@@ -1,0 +1,19 @@
+ enum STATUS_TODO {
+   CANCELED
+   PROGRESS
+   SUCCEFULL
+   WAITING
+ }
+  type Todo{
+      id: ID!
+      name: String!
+      content: String!
+      status: STATUS_TODO!
+  }
+  
+  
+  type Query {
+    # ici on definit les methodes qui seront implementée dans le resolvers
+    hello(name: String): String!
+    getTodos: [Todo]!
+  }
