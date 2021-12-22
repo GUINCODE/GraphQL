@@ -2,6 +2,7 @@ import { GraphQLServer } from "graphql-yoga";
 import { Query } from "./resolvers/Query.mjs";
 import { Todo } from "./resolvers/Todo.mjs";
 import { User } from "./resolvers/User.mjs";
+import { db } from "./db/db.mjs";
 
 
 // ... or using `require()`
@@ -15,5 +16,11 @@ const resolvers = {
   User:User
 };
 
-const server = new GraphQLServer({ typeDefs, resolvers });
+const server = new GraphQLServer({ 
+  typeDefs, 
+  resolvers,
+  context : {
+    db
+  }
+});
 server.start(() => console.log("Server is running on localhost:4000"));
