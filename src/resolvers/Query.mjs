@@ -1,27 +1,22 @@
- 
-const todos = [
-  {
-    id: 1,
-    name: "Todo 1",
-    content: "Apprendre les schema",
-    status: 'SUCCEFULL',
-  },
-  {
-    id: 2,
-    name: "Todo II",
-    content: "Apprendre les Query",
-    status: 'PROGRESS',
-  },
-  {
-    id: 2,
-    name: "Todo III",
-    content: "Apprendre les Resolvers",
-    status: 'WAITING',
-  },
-];
+ import { db } from "../db/db.mjs"
 
-export const Query={
-    // ici on implemente l'enseble des operation de manipulation des datas
-    hello: (_, { name }) => `Hello ${name || "World"}`,
-    getTodos: ()=>{ return todos}
-}
+export const Query = {
+  // ici on implemente l'enseble des operation de manipulation des datas
+  hello: (_, { name }) => `Hello ${name || "World"}`,
+  getTodos: (parents, ars, conext, info) => {
+    return db.todos;
+  },
+
+  getTodoById: (parents, { id }, conext, info) => {
+   
+    let todo = db.todos.find((todo) => todo.id == id);
+    // if (typeof todo === "undefined") {
+    if (!todo) {
+       console.log("aucun todo trouvé");
+      // throw new Error("le todo de id n'existe pas")
+       return null;
+    } else  return todo;
+  },
+
+  
+};

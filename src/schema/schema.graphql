@@ -4,16 +4,27 @@
    SUCCEFULL
    WAITING
  }
+
+type User{
+  id:ID!
+  nom: String!
+  prenom: String!
+  todos: [Todo]
+}
+
   type Todo{
       id: ID!
       name: String!
       content: String!
       status: STATUS_TODO!
+      user: User!
   }
   
-  
+
+
   type Query {
-    # ici on definit les methodes qui seront implementée dans le resolvers
+    # ici on definit les methodes qui seront implementées dans le resolvers
     hello(name: String): String!
     getTodos: [Todo]!
+    getTodoById(id: Int!): Todo
   }
