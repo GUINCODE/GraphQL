@@ -5,6 +5,5 @@ export const Todo = {
     const { userId } = parents;
    console.log("Parent: ", parents);
     return db.users.find((user) => user.id === userId);
-   
   },
 };
